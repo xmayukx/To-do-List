@@ -10,9 +10,6 @@ app.use(express.static("public"));
 // Database
 mongoose.connect("mongodb+srv://admin-mayukh:etywUtj70vvgCmXn@cluster0.vcigxpm.mongodb.net/todolistDB");
 
-// username: admin-mayukh
-// password: etywUtj70vvgCmXn
-
 // Set view engine(EJS)
 app.set('view engine', 'ejs');
 
@@ -197,7 +194,11 @@ app.get("/about", function (req, res) {
 //     res.redirect("/work");
 // });
 
+let port= process.env.PORT;
+if(port===null || port ===""){
+    port=3000;
+}
 
-app.listen(3000, function () {
-    console.log("Server listening on port 3000");
+app.listen(port, function () {
+    console.log("Server has started on port successfully");
 });
